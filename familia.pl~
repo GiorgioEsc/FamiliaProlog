@@ -25,11 +25,13 @@ padrede('Ana','Isabel').
 padrede('Ines','Adriana').
 padrede('Ines','Carlos').
 
+
 hijode(A,B):-padrede(B,A).
 hermanode(A,B):-padrede(C,A),padrede(C,B),A\==B.
 tiode(A,B):-padrede(C,B),hermanode(C,A).
 abuelode(A,B):-padrede(A,C),padrede(C,B).
 nietode(A,B):-abuelode(B,A).
+sobrinode(A,B):-tiode(B,A).
 primode(A,B):-padrede(C,A),padrede(D,B),hermanode(C,D).
 casados(A,B):-padrede(A,C),padrede(B,C),A\==B.esfeliz().
 esfeliz(A):-not(casados('A',_)).
